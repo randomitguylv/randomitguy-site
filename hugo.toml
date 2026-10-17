@@ -1,0 +1,24 @@
+baseURL = "https://www.randomitguy.com/"
+locale = "en-us"
+title = "Random IT Guy"
+timeZone = "America/Los_Angeles"
+
+[taxonomies]
+  tag = "tags"
+
+[markup.goldmark.renderer]
+  unsafe = true  # posts came from Blogger HTML and may contain inline HTML
+
+[menus]
+  [[menus.main]]
+    name = "Posts"
+    url = "/"
+    weight = 1
+  [[menus.main]]
+    name = "Tags"
+    url = "/tags/"
+    weight = 2
+
+[params]
+  # GoatCounter site code (the "xyz" in xyz.goatcounter.com). Leave empty to turn analytics off.
+  goatcounter = ""

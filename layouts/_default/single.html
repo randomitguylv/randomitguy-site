@@ -1,0 +1,7 @@
+{{ define "main" }}
+<article>
+  <h1>{{ .Title }}</h1>
+  {{ if eq .Section "posts" }}<p class="meta">{{ .Date.Format "January 2, 2006" }}{{ with .Params.tags }} · {{ range $i, $t := . }}{{ if $i }}, {{ end }}{{ with site.GetPage (printf "/tags/%s" ($t | urlize)) }}<a href="{{ .RelPermalink }}">{{ $t }}</a>{{ else }}{{ $t }}{{ end }}{{ end }}{{ end }}</p>{{ end }}
+  {{ .Content }}
+</article>
+{{ end }}

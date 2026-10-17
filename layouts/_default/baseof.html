@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="{{ site.Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} | {{ site.Title }}{{ end }}</title>
+  <link rel="canonical" href="{{ .Permalink }}">
+  {{ with .OutputFormats.Get "rss" }}<link rel="alternate" type="application/rss+xml" href="{{ .Permalink }}" title="{{ site.Title }}">{{ end }}
+  <style>
+    :root { --fg:#1f2328; --muted:#59636e; --bg:#fbfcfd; --accent:#0969da; --code:#eef1f4; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --fg:#e6edf3; --muted:#9198a1; --bg:#0d1117; --accent:#4493f8; --code:#161b22; color-scheme:dark; } }
+    :root[data-theme="dark"] { --fg:#e6edf3; --muted:#9198a1; --bg:#0d1117; --accent:#4493f8; --code:#161b22; color-scheme:dark; }
+    body { margin:0 auto; max-width:46rem; padding-block:1.5rem 4rem; padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); font:1.05rem/1.65 system-ui,sans-serif; color:var(--fg); background:var(--bg); }
+    h1, h2 { text-wrap:balance; line-height:1.25; }
+    code { font-family:ui-monospace,SFMono-Regular,Menlo,monospace; font-size:.92em; }
+    a:focus-visible { outline:2px solid var(--accent); outline-offset:2px; }
+    a { color:var(--accent); }
+    header { display:flex; flex-wrap:wrap; gap:1rem; align-items:baseline; justify-content:space-between; margin-bottom:2rem; }
+    header .brand { font-weight:700; font-size:1.25rem; text-decoration:none; color:var(--fg); }
+    nav a { margin-left:1rem; }
+    img { max-width:100%; height:auto; }
+    pre { overflow-x:auto; padding:1rem; background:var(--code); border-radius:6px; }
+    .meta { color:var(--muted); font-size:.9rem; }
+    ul.posts { list-style:none; padding:0; }
+    ul.posts li { margin-bottom:1.25rem; }
+  </style>
+  {{ with site.Params.goatcounter }}{{ if hugo.IsProduction }}<script data-goatcounter="https://{{ . }}.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>{{ end }}{{ end }}
+</head>
+<body>
+  <header>
+    <a class="brand" href="{{ site.Home.RelPermalink }}">{{ site.Title }}</a>
+    <nav>{{ range site.Menus.main }}<a href="{{ .URL }}">{{ .Name }}</a>{{ end }}</nav>
+  </header>
+  <main>{{ block "main" . }}{{ end }}</main>
+</body>
+</html>
