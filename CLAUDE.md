@@ -8,3 +8,4 @@ Hugo site (Hugo 0.168.0 extended), no theme, custom layouts in `layouts/`. Deplo
 - Images go in `static/images/`.
 - The repo is public: no secrets, personal email addresses or private notes in commits.
 - Never edit DNS or mail records. That's out of scope for this repo.
+- Done means documented: a change to how the site is built or deployed updates this file (and README, if any) in the same PR, and the final reply says which docs were updated. Vault side: the blog area's hub (vault `agents.md` §3).
